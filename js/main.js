@@ -137,10 +137,49 @@
 
 {
   function create_name(){
-    document.getElementById('ans').value = foo;
+    var pos, idx, word, result, word_type, arr, flag
+    pos = document.getElementByName('name_position').value; //位置の指定 0:指定なし, 1:先頭指定, 2:末尾指定
+    word_type = document.getElementByName('name_type').value; //系統の指定 0: 指定なし, 1:日常, 2:コメディ, 3:ファンタジー, 4:アクション
+    word = document.getElementById('name').value; //入れたい文字
+    idx = Math.floor( Math.random() * 101 ); //idx1に0～100の値をランダムに入れる
+    idx1 = Math.floor( Math.random() * 301 ); //idx1に0～300の値をランダムに入れる
+    result = '';
+
+    if((pos == 2 || pos == 0) && word_type == 0){
+      arr = JSON.parse('<?php echo $json_array1; ?>');
+    }
+    if((pos == 2 || pos == 0) && word_type == 4){
+      arr = JSON.parse('<?php echo $json_array2; ?>');
+    }
+    if((pos == 2 || pos == 0) && word_type == 3){
+      arr = JSON.parse('<?php echo $json_array3; ?>');
+    }
+    if((pos == 2 || pos == 0) && word_type == 2){
+      arr = JSON.parse('<?php echo $json_array4; ?>');
+    }
+    if((pos == 2 || pos == 0) && word_type == 1){
+      arr = JSON.parse('<?php echo $json_array5; ?>');
+    }
+    if(pos == 1){
+      arr = JSON.parse('<?php echo $json_array6; ?>');
+    }
     
+
+    if((pos == 2 || pos == 0) && word_type != 0){
+      result = String(word) + arr[idx];
+    }else if((pos == 2 || pos == 0) && word_type == 0){
+      result = String(word) + arr[idx1];
+    }else if(pos == 1){
+      result = arr[idx] + String(word);
+    }else if(pos == 0){
+      result = arr[idx];
+    }else{
+      result = '[Error] : 位置指定条件分岐';
+    }
+    document.getElementById('ans').value = result;
   }
 }
+
 
 // {
 //   function ranking(){
