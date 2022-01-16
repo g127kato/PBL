@@ -109,16 +109,17 @@
         <div>  
           <label for="name">入れたい文字列</label>
           <input type="text" id="name">
-          <label><input type="radio" name="name_position" checked> 指定なし</label>
-          <label><input type="radio" name="name_position"> 先頭</label>
-          <label><input type="radio" name="name_position"> 末尾</label>
+          <label><input type="radio" name="name_position" value="0" checked> 指定なし</label>
+          <label><input type="radio" name="name_position" value="1"> 先頭</label>
+          <label><input type="radio" name="name_position" value="2"> 末尾</label>
         </div>
         <div>
           <div class="type">
-            <div class="box1"><label><input type="radio" name="name_type" checked>かわいい系</label></div>
-            <div class="box2"><label><input type="radio" name="name_type">かっこいい系</label></div>
-            <div class="box3"><label><input type="radio" name="name_type">かっこいい系</label></div>
-            <div class="box4"><label><input type="radio" name="name_type">指定なし</label></div>
+            <div class="box1"><label><input type="radio" name="name_type" value="0" checked>指定なし</label></div>
+            <div class="box2"><label><input type="radio" name="name_type" value="4">アクション系</label></div>
+            <div class="box3"><label><input type="radio" name="name_type" value="3">ファンタジー系</label></div>
+            <div class="box4"><label><input type="radio" name="name_type" value="2">コメディ系</label></div>
+            <div class="box5"><label><input type="radio" name="name_type" value="1">日常系</label></div>
           </div>
         </div>
         <button class="clear_name" onClick="name_clear()">
