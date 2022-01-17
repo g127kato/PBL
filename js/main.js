@@ -16,6 +16,7 @@
         content.classList.remove('active');
       });
       document.getElementById(clickedItem.dataset.id).classList.add('active');
+      document.getElementById(clickedItem.dataset.pass).classList.add('active');
     });
   });
 }
@@ -137,31 +138,42 @@
 
 {
   function create_name(){
-    var pos, idx, word, result, word_type, arr, flag
-    pos = document.getElementByName('name_position').value; //位置の指定 0:指定なし, 1:先頭指定, 2:末尾指定
-    word_type = document.getElementByName('name_type').value; //系統の指定 0: 指定なし, 1:日常, 2:コメディ, 3:ファンタジー, 4:アクション
+    var pos, idx, word, idx1, result, word_type, arr ,checkValue, checkValue1;
+    checkValue = document.getElementsByName('name_position'); //位置の指定 0:指定なし, 1:先頭指定, 2:末尾指定
+    for (var i = 0; i < 3; i++){
+      if (checkValue.item(i).checked){
+        pos = i;
+      }
+    }
+    checkValue1 = document.getElementsByName('name_type'); //系統の指定 0: 指定なし, 1:日常, 2:コメディ, 3:ファンタジー, 4:アクション
+    for (var i = 0; i < 5; i++){
+      if (checkValue1.item(i).checked){
+        word_type = i;
+      }
+    }
     word = document.getElementById('name').value; //入れたい文字
     idx = Math.floor( Math.random() * 101 ); //idx1に0～100の値をランダムに入れる
     idx1 = Math.floor( Math.random() * 301 ); //idx1に0～300の値をランダムに入れる
     result = '';
-
+    console.log(pos);
+    console.log(checkValue);
     if((pos == 2 || pos == 0) && word_type == 0){
-      arr = JSON.parse('<?php echo $json_array1; ?>');
+      arr = a1;
     }
     if((pos == 2 || pos == 0) && word_type == 4){
-      arr = JSON.parse('<?php echo $json_array2; ?>');
+      arr = a2;
     }
     if((pos == 2 || pos == 0) && word_type == 3){
-      arr = JSON.parse('<?php echo $json_array3; ?>');
+      arr = a3;
     }
     if((pos == 2 || pos == 0) && word_type == 2){
-      arr = JSON.parse('<?php echo $json_array4; ?>');
+      arr = a4;
     }
     if((pos == 2 || pos == 0) && word_type == 1){
-      arr = JSON.parse('<?php echo $json_array5; ?>');
+      arr = a5;
     }
     if(pos == 1){
-      arr = JSON.parse('<?php echo $json_array6; ?>');
+      arr = a6;
     }
     
 
@@ -179,7 +191,6 @@
     document.getElementById('ans').value = result;
   }
 }
-
 
 // {
 //   function ranking(){
