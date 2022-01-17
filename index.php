@@ -7,7 +7,7 @@
   </head>
   <body>
   <?php
-      $con = mysql_connect('localhost','g127kato','') or die("接続失敗"); //mysqlに接続
+            $con = mysql_connect('localhost','g127kato','') or die("接続失敗"); //mysqlに接続
       mysql_select_db('g127kato') or die("選択失敗"); //データベース接続
       mysql_query('SET NAMES utf8', $con);
 
@@ -16,9 +16,11 @@
       $i = 0;
       while ($db = mysql_fetch_assoc($res)) {
           $array[$i] = $db['word'];
-          $json_array1 = json_encode($array);//javascriptに変換するためにjson形式にする
+          echo '<table border=1 style="background-color: lavender; font-weight: bold;">';
+          echo "<tr><td>$i</td><td>$array[$i]</td></tr></table>";
           $i++;
       }
+          $json_array1 = json_encode($array);//javascriptに変換するためにjson形式にする
 
       $sql2 = "SELECT word FROM name_top WHERE attributes = 'action'"; //name_topのアクション系の単語を取得
       $res = mysql_query($sql2, $con) or die("エラー");
@@ -68,12 +70,18 @@
       mysql_close($con);
     ?>
       <script type="text/javascript">
-      var foo = JSON.parse('<?php echo $json_array; ?>');//php->javascript形式で配列に保存する
+        var a1,a2,a3,a4,a5,a6;
+      a1 = JSON.parse('<?php echo $json_array1; ?>');//php->javascript形式で配列に保存する
+      a2 = JSON.parse('<?php echo $json_array2; ?>');
+      a3 = JSON.parse('<?php echo $json_array3; ?>');
+      a4 = JSON.parse('<?php echo $json_array4; ?>');
+      a5 = JSON.parse('<?php echo $json_array5; ?>');
+      a6 = JSON.parse('<?php echo $json_array6; ?>');
       </script>
     <div class="container">
       <ul class="menu">
-        <li><a href="#" class="active" data-id="about">パスワード詳細設定</a></li>
-        <li><a href="#" data-id="service">ユーザ名詳細設定</a></li>
+        <li><a href="#" class="active" data-id="about" data-pass="pass_caution">パスワード詳細設定</a></li>
+        <li><a href="#" data-id="service" data-pass="user_caution">ユーザ名詳細設定</a></li>
       </ul>
       <section class="content active" id="about">
         <p>パスワード詳細設定</p>
@@ -109,18 +117,19 @@
         <div>  
           <label for="name">入れたい文字列</label>
           <input type="text" id="name">
-          <label><input type="radio" name="name_position" value="0" checked> 指定なし</label>
-          <label><input type="radio" name="name_position" value="1"> 先頭</label>
-          <label><input type="radio" name="name_position" value="2"> 末尾</label>
+          <label><input type="radio" name="name_position" checked> 指定なし</label>
+          <label><input type="radio" name="name_position"> 先頭</label>
+          <label><input type="radio" name="name_position"> 末尾</label>
         </div>
         <div>
-          <div class="type">
+        <div class="type">
             <div class="box1"><label><input type="radio" name="name_type" value="0" checked>指定なし</label></div>
             <div class="box2"><label><input type="radio" name="name_type" value="4">アクション系</label></div>
             <div class="box3"><label><input type="radio" name="name_type" value="3">ファンタジー系</label></div>
             <div class="box4"><label><input type="radio" name="name_type" value="2">コメディ系</label></div>
             <div class="box5"><label><input type="radio" name="name_type" value="1">日常系</label></div>
           </div>
+
         </div>
         <button class="clear_name" onClick="name_clear()">
           クリア
@@ -128,8 +137,23 @@
       </section>
       <input type="text" id="ans" readonly>
       <button id="generation" onClick="change_button()">生成</button>
-    </div>
-
+      <div class="content caution active" id="pass_caution">
+        <p>パスワード生成</p>
+        <ul>
+          お好みのパスワードを自動生成します。パスワードに入れたい文字列を入力し、文字数、文字種、数字を指定して、『生成』ボタンをクリックしてください。​<br>
+          パスワードに入れたい文字列＋文字数分のランダム文字列のパスワードが生成されます。​<br>
+          入れたい文字列がない場合はすべて自動生成されます。​<br>
+          <div class="attention">※ひらがな、カタカナ、漢字は使用できません。</div>
+        </ul>
+      </div>
+      <div class="content caution" id="user_caution">
+        <p>ユーザー名​</p>
+        <ul>
+          お好みの名前を自動生成します。​​<br>
+          ​​入れたい文字列を指定して、『生成』ボタンをクリックしてください。<br>
+          入れたい文字列がない場合はすべて自動生成されます。
+        </ul>
+      </div>
     <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
