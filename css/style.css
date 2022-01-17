@@ -89,11 +89,27 @@ background-color: aqua;
 .type {
   display: grid;
   grid-template-columns: repeat(2, 300px);
-  grid-template-rows: 100px 100px;
+  grid-template-rows: repeat(3, 100px);
   align-items: center;
-  margin-left: 64px;
+  margin-left: 56px;
 }
 
 #text1{
 
+}
+
+div.content.caution.active{
+  background-color: silver;
+  display: inline-block;
+}
+
+div.content.caution.active p{
+  display: inline-block;
+  background-color: #99FFFF;
+  margin: 0px;
+  padding: 8px;
+}
+
+div.content.active div.attention{
+  color: red;
 }
