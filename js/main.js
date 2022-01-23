@@ -145,7 +145,7 @@
         pos = i;
       }
     }
-    checkValue1 = document.getElementsByName('name_type'); //系統の指定 0: 指定なし, 1:日常, 2:コメディ, 3:ファンタジー, 4:アクション
+    checkValue1 = document.getElementsByName('name_type'); //系統の指定 0:指定なし, 1:アクション, 2:ファンタジー, 3:コメディ, 4:日常
     for (var i = 0; i < 5; i++){
       if (checkValue1.item(i).checked){
         word_type = i;
@@ -155,35 +155,32 @@
     idx = Math.floor( Math.random() * 101 ); //idx1に0～100の値をランダムに入れる
     idx1 = Math.floor( Math.random() * 301 ); //idx1に0～300の値をランダムに入れる
     result = '';
-    console.log(pos);
-    console.log(checkValue);
-    if((pos == 2 || pos == 0) && word_type == 0){
+    if((pos == 2 || pos == 0) && word_type == 0){ // 系統指定なし
       arr = a1;
     }
-    if((pos == 2 || pos == 0) && word_type == 4){
+    if((pos == 2 || pos == 0) && word_type == 1){ // アクション
       arr = a2;
     }
-    if((pos == 2 || pos == 0) && word_type == 3){
+    if((pos == 2 || pos == 0) && word_type == 2){ // ファンタジー
       arr = a3;
     }
-    if((pos == 2 || pos == 0) && word_type == 2){
+    if((pos == 2 || pos == 0) && word_type == 3){ // コメディ
       arr = a4;
     }
-    if((pos == 2 || pos == 0) && word_type == 1){
+    if((pos == 2 || pos == 0) && word_type == 4){ // 日常
       arr = a5;
     }
-    if(pos == 1){
+    if(pos == 1){ // 先頭指定
       arr = a6;
     }
     
-
     if((pos == 2 || pos == 0) && word_type != 0){
-      result = String(word) + arr[idx];
-    }else if((pos == 2 || pos == 0) && word_type == 0){
-      result = String(word) + arr[idx1];
-    }else if(pos == 1){
       result = arr[idx] + String(word);
-    }else if(pos == 0){
+    }else if(pos == 2 && word_type == 0){
+      result = arr[idx1] + String(word);
+    }else if(pos == 1){
+      result = String(word) + arr[idx];
+    }else if(pos == 0 && word_type == 0){
       result = arr[idx];
     }else{
       result = '[Error] : 位置指定条件分岐';
@@ -191,7 +188,6 @@
     document.getElementById('ans').value = result;
   }
 }
-
 // {
 //   function ranking(){
 //     _d = new Date().getTime(); //キャッシュ回避のため日時を利用する
