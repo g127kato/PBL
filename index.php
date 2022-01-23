@@ -7,7 +7,7 @@
   </head>
   <body>
   <?php
-            $con = mysql_connect('localhost','g127kato','') or die("接続失敗"); //mysqlに接続
+      $con = mysql_connect('localhost','g127kato','') or die("接続失敗"); //mysqlに接続
       mysql_select_db('g127kato') or die("選択失敗"); //データベース接続
       mysql_query('SET NAMES utf8', $con);
 
@@ -80,12 +80,6 @@
       a4 = JSON.parse('<?php echo $json_array4; ?>');
       a5 = JSON.parse('<?php echo $json_array5; ?>');
       a6 = JSON.parse('<?php echo $json_array6; ?>');
-      console.log(a1);
-      console.log(a2);
-      console.log(a3);
-      console.log(a4);
-      console.log(a5);
-      console.log(a6);
       </script>
     <div class="container">
       <ul class="menu">
@@ -132,11 +126,11 @@
         </div>
         <div>
         <div class="type">
-            <div class="box1"><label><input type="radio" name="name_type" value="0" checked>指定なし</label></div>
-            <div class="box2"><label><input type="radio" name="name_type" value="4">アクション系</label></div>
-            <div class="box3"><label><input type="radio" name="name_type" value="3">ファンタジー系</label></div>
-            <div class="box4"><label><input type="radio" name="name_type" value="2">コメディ系</label></div>
-            <div class="box5"><label><input type="radio" name="name_type" value="1">日常系</label></div>
+            <div class="box1"><label><input type="radio" name="name_type" checked>指定なし</label></div>
+            <div class="box2"><label><input type="radio" name="name_type">アクション系</label></div>
+            <div class="box3"><label><input type="radio" name="name_type">ファンタジー系</label></div>
+            <div class="box4"><label><input type="radio" name="name_type">コメディ系</label></div>
+            <div class="box5"><label><input type="radio" name="name_type">日常系</label></div>
           </div>
 
         </div>
