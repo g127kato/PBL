@@ -160,19 +160,19 @@
       arr = a1;
       arr1 = a6;
     }
-    if((pos == 2 || pos == 0) && word_type == 4){ // アクション
+    if((pos == 2 || pos == 0) && word_type == 1){ // アクション
       arr = a2;
       arr1 = a6;
     }
-    if((pos == 2 || pos == 0) && word_type == 3){ // ファンタジー
+    if((pos == 2 || pos == 0) && word_type == 2){ // ファンタジー
       arr = a3;
       arr1 = a6;
     }
-    if((pos == 2 || pos == 0) && word_type == 2){ // コメディ
+    if((pos == 2 || pos == 0) && word_type == 3){ // コメディ
       arr = a4;
       arr1 = a6;
     }
-    if((pos == 2 || pos == 0) && word_type == 1){ // 日常
+    if((pos == 2 || pos == 0) && word_type == 4){ // 日常
       arr = a5;
       arr1 = a6;
     }
