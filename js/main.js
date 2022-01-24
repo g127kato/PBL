@@ -154,34 +154,42 @@
     word = document.getElementById('name').value; //入れたい文字
     idx = Math.floor( Math.random() * 101 ); //idx1に0～100の値をランダムに入れる
     idx1 = Math.floor( Math.random() * 301 ); //idx1に0～300の値をランダムに入れる
+    idx2 = Math.floor( Math.random() * 272 );
     result = '';
     if((pos == 2 || pos == 0) && word_type == 0){ // 系統指定なし
       arr = a1;
+      arr1 = a6;
     }
-    if((pos == 2 || pos == 0) && word_type == 1){ // アクション
+    if((pos == 2 || pos == 0) && word_type == 4){ // アクション
       arr = a2;
+      arr1 = a6;
     }
-    if((pos == 2 || pos == 0) && word_type == 2){ // ファンタジー
+    if((pos == 2 || pos == 0) && word_type == 3){ // ファンタジー
       arr = a3;
+      arr1 = a6;
     }
-    if((pos == 2 || pos == 0) && word_type == 3){ // コメディ
+    if((pos == 2 || pos == 0) && word_type == 2){ // コメディ
       arr = a4;
+      arr1 = a6;
     }
-    if((pos == 2 || pos == 0) && word_type == 4){ // 日常
+    if((pos == 2 || pos == 0) && word_type == 1){ // 日常
       arr = a5;
+      arr1 = a6;
     }
     if(pos == 1){ // 先頭指定
-      arr = a6;
+      arr1 = a6;
     }
     
-    if((pos == 2 || pos == 0) && word_type != 0){
+    if(pos == 2 && word_type != 0){ // 末尾指定 系統指定あり
       result = arr[idx] + String(word);
-    }else if(pos == 2 && word_type == 0){
+    }else if(pos == 2 && word_type == 0){ // 末尾指定 系統指定無し
       result = arr[idx1] + String(word);
-    }else if(pos == 1){
-      result = String(word) + arr[idx];
-    }else if(pos == 0 && word_type == 0){
-      result = arr[idx];
+    }else if(pos == 1){ // 先頭指定
+      result = String(word) + arr1[idx2];
+    }else if(pos == 0 && word_type != 0){ // 位置指定なし 系統指定あり
+      result = arr[idx] + arr1[idx2];
+    }else if(pos == 0 && word_type == 0){ // 位置指定なし 系統指定なし
+      result = arr[idx1] + arr1[idx2];
     }else{
       result = '[Error] : 位置指定条件分岐';
     }
